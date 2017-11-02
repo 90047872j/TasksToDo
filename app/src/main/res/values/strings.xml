@@ -1,0 +1,38 @@
+<resources>
+    <string name="app_name">TasksToDo</string>
+
+
+
+    <string name="editorActivity_title">New Task:</string>
+
+    <string name="task_title_txt">Title:</string>
+    <string name="task_desc_txt">Description:</string>
+    <string name="task_date_txt">Entry date:</string>
+    <string name="task_webPg_txt">Web Page:</string>
+    <string name="task_lat_txt">Latitude:</string>
+    <string name="task_lon_txt">Longitude:</string>
+    <string name="task_imageS_txt">Image Source:</string>
+
+    <string name="task_title_hint">(E.g. Walk Dog)</string>
+    <string name="task_desc_hint">(E.g. Take Scooby-Doo to the park)</string>
+    <string name="task_date_hint">DD/MM/YY</string>
+    <string name="task_webPg_hint">(E.g. www.google.com)</string>
+    <string name="task_lat_hint">(E.g. 41.38648)</string>
+    <string name="task_lon_hint">(E.g. 2.184637)</string>
+    <string name="task_imageS_hint">(E.g. www.google.com)</string>
+
+
+    <string name="action_save">Save</string>
+    <string name="action_delete">Delete</string>
+    <string name="action_insert_new_task">New Task</string>
+    <string name="action_insert_dummy_data">Insert Dummy Task</string>
+    <string name="action_delete_all_entries">Delete All Tasks</string>
+
+    <string name="new_task_added_txt">Dummy Task added</string>
+    <string name="dummy_task_added_txt">New Task added</string>
+    <string name="deleted_tasks_txt">All Tasks deleted</string>
+
+    <string name="empty_view_txt">No Tasks\nInsert a new task by clicking the options menu</string>
+
+
+</resources>
