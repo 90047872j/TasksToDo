@@ -2,7 +2,6 @@
     <string name="app_name">TasksToDo</string>
 
 
-
     <string name="editorActivity_title">New Task:</string>
 
     <string name="task_title_txt">Title:</string>
@@ -21,18 +20,32 @@
     <string name="task_lon_hint">(E.g. 2.184637)</string>
     <string name="task_imageS_hint">(E.g. www.google.com)</string>
 
-
     <string name="action_save">Save</string>
     <string name="action_delete">Delete</string>
     <string name="action_insert_new_task">New Task</string>
     <string name="action_insert_dummy_data">Insert Dummy Task</string>
     <string name="action_delete_all_entries">Delete All Tasks</string>
 
-    <string name="new_task_added_txt">Dummy Task added</string>
-    <string name="dummy_task_added_txt">New Task added</string>
+    <string name="new_task_added_txt">New Task added</string>
+    <string name="dummy_task_added_txt">Dummy Task added</string>
     <string name="deleted_tasks_txt">All Tasks deleted</string>
 
-    <string name="empty_view_txt">No Tasks\nInsert a new task by clicking the options menu</string>
+    <string name="empty_tasks_list_txt">No tasks found</string>
+    <string name="empty_view_txt">No Tasks found\nInsert a new task by clicking the options menu</string>
+
+    <string name="dummy_task_title_txt">Bathe Scooby-Doo</string>
+    <string name="dummy_task_description_txt">No time for mistery now, is bathing time</string>
+    <string name="dummy_task_date_txt">09/11/2017</string>
+    <string name="dummy_task_webPage_txt">https://www.cesarsway.com/dog-care/grooming/how-to-bathe-your-dog</string>
+    <string name="dummy_task_lat_txt">41.39028201209704</string>
+    <string name="dummy_task_lon_txt">2.1881286799907684</string>
+    <string name="dummy_task_isDone_txt">false</string>
+    <string name="dummy_task_isUrgent_txt">true</string>
+    <string name="dummy_task_imageS_txt">https://vignette.wikia.nocookie.net/scoobydoo/images/5/5a/Bathtub.png/revision/latest?cb=20150404165750</string>
+
+    <string name="delete_dialog_all_message">Delete all tasks?</string>
+    <string name="delete_dialog_button_cancel">Cancel</string>
+    <string name="delete_dialog_delete_label">Confirmation</string>
 
 
 </resources>

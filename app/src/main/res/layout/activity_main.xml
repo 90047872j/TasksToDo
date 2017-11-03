@@ -16,26 +16,27 @@
         android:id="@+id/empty_view_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_centerInParent="true"
         android:focusableInTouchMode="true">
 
         <ImageView
-            android:id="@+id/empty_view_image"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_centerHorizontal="true"
-            android:src="@drawable/no_image" />
+            android:id="@+id/noTasksIV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/notasks" />
 
         <TextView
             android:id="@+id/empty_view_text_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/empty_view_image"
+            android:layout_below="@+id/noTasksIV"
+
             android:layout_centerInParent="true"
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
             android:fontFamily="sans-serif-medium"
             android:text="@string/empty_view_txt"
-            android:textAlignment="center"/>
+            android:textAlignment="center" />
 
     </RelativeLayout>
 
