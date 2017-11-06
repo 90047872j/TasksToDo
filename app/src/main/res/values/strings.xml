@@ -1,9 +1,6 @@
 <resources>
     <string name="app_name">TasksToDo</string>
 
-
-    <string name="editorActivity_title">New Task:</string>
-
     <string name="task_title_txt">Title:</string>
     <string name="task_desc_txt">Description:</string>
     <string name="task_date_txt">Entry date:</string>
@@ -43,9 +40,17 @@
     <string name="dummy_task_isUrgent_txt">true</string>
     <string name="dummy_task_imageS_txt">https://vignette.wikia.nocookie.net/scoobydoo/images/5/5a/Bathtub.png/revision/latest?cb=20150404165750</string>
 
-    <string name="delete_dialog_all_message">Delete all tasks?</string>
+    <string name="delete_all_dialogl_message">Delete all tasks?</string>
     <string name="delete_dialog_button_cancel">Cancel</string>
-    <string name="delete_dialog_delete_label">Confirmation</string>
+    <string name="confirmation_dialog_title">Confirmation</string>
+
+    <string name="empty_fields">No fields can be empty</string>
+
+    <string name="EditorActivity_title">Create New Task</string>
+
+    <string name="button_yes">Yes</string>
+    <string name="button_no">No</string>
+
 
 
 </resources>

@@ -36,8 +36,8 @@ public class ListAdapter extends ArrayAdapter<Task> {
         tv_taskDate.setText(data.get(position).getDate());
         tv_taskTitle.setText(data.get(position).getTitle());
 
-        if (data.get(position).isDone())
-            tv_taskDate.setTextColor(ContextCompat.getColor(getContext(), R.color.colorRed));
+        if (data.get(position).isUrgent())
+            tv_taskTitle.setTextColor(ContextCompat.getColor(getContext(), R.color.colorRed));
 
         return row;
 

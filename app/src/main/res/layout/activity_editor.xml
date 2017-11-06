@@ -193,6 +193,7 @@
             </LinearLayout>
 
                 <ImageButton
+                    android:id="@+id/locationB"
                     android:layout_width="56dp"
                     android:layout_height="56dp"
                     android:background="@drawable/rounded_button"
@@ -202,6 +203,7 @@
         </LinearLayout>
 
         <CheckBox
+            android:id="@+id/isUrgentCB"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textStyle="bold"

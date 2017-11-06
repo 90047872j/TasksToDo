@@ -18,14 +18,7 @@ public class MainActivity extends AppCompatActivity {
 
     ListView mlist;
     List<Task> tasks;
-    ListAdapter nuestro_adapter;
-
-
-    @Override
-    public boolean onSupportNavigateUp() {
-        finish();
-        return true;
-    }
+    ListAdapter mAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,11 +28,10 @@ public class MainActivity extends AppCompatActivity {
         View emptyView = findViewById(R.id.empty_view_layout);
         mlist.setEmptyView(emptyView);
         tasks = Task.listAll(Task.class);
-        nuestro_adapter = new ListAdapter(this, R.layout.row, tasks);
-        mlist.setAdapter(nuestro_adapter);
-        nuestro_adapter.notifyDataSetChanged();
+        mAdapter = new ListAdapter(this, R.layout.row, tasks);
+        mlist.setAdapter(mAdapter);
+        mAdapter.notifyDataSetChanged();
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -56,9 +48,7 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             case R.id.insert_dummy_item:
                 addDummyTask();
-                tasks.clear();
-                tasks.addAll(Task.listAll(Task.class));
-                nuestro_adapter.notifyDataSetChanged();
+                refreshList(tasks,mAdapter);
                 return true;
             case R.id.delete_all_item:
                 if (tasks.isEmpty()){
@@ -70,12 +60,6 @@ public class MainActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-
-
-    private void addTask(Task task) {
-        task.save();
-    }
-
 
     public static void newToast(Context context, String string) {
         Toast.makeText(context, string, Toast.LENGTH_SHORT).show();
@@ -99,17 +83,14 @@ public class MainActivity extends AppCompatActivity {
 
     private void deleteAllTasks() {
         newToast(this, getString(R.string.deleted_tasks_txt));
-        tasks.clear();
         Task.deleteAll(Task.class);
-        nuestro_adapter.notifyDataSetChanged();
-
+        refreshList(tasks,mAdapter);
     }
-
 
     private void showDeleteConfirmationDialog() {
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setMessage(R.string.delete_dialog_all_message);
+        builder.setMessage(R.string.delete_all_dialogl_message);
         builder.setPositiveButton(R.string.action_delete, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
                 deleteAllTasks();
@@ -124,11 +105,21 @@ public class MainActivity extends AppCompatActivity {
         });
 
         AlertDialog alertDialog = builder.create();
-        alertDialog.setTitle(getString(R.string.delete_dialog_delete_label));
+        alertDialog.setTitle(getString(R.string.confirmation_dialog_title));
         alertDialog.show();
     }
 
+    @Override
+    protected void onResume() {
+        refreshList(tasks,mAdapter);
+        super.onResume();
+    }
 
+    public void refreshList (List<Task> list, ListAdapter adapter){
+        list.clear();
+        list.addAll(Task.listAll(Task.class));
+        adapter.notifyDataSetChanged();
 
+    }
 
 }

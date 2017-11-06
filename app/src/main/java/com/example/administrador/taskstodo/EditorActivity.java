@@ -1,19 +1,29 @@
 package com.example.administrador.taskstodo;
 
+import android.Manifest;
 import android.app.DatePickerDialog;
+import android.content.pm.PackageManager;
+import android.location.Location;
+import android.location.LocationListener;
 import android.location.LocationManager;
+import android.os.Build;
+import android.support.annotation.NonNull;
+import android.support.annotation.RequiresApi;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
 
 import java.util.Calendar;
 
-public class EditorActivity extends AppCompatActivity {
+public class EditorActivity extends AppCompatActivity implements LocationListener {
 
     Calendar pDay = Calendar.getInstance();
 
@@ -24,17 +34,21 @@ public class EditorActivity extends AppCompatActivity {
     EditText et_imageS;
     EditText et_lat;
     EditText et_lon;
+    CheckBox cb_urgent;
     ImageButton b_pDate;
     ImageButton b_location;
     LocationManager mLocationManager;
+    int MY_PERMISSIONS_REQUEST_LOCATION = 1;
 
-
+    @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_editor);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle(R.string.EditorActivity_title);;
         b_pDate = findViewById(R.id.dateB);
-
+        b_location = findViewById(R.id.locationB);
         et_title = findViewById(R.id.taskTitleET);
         et_desc = findViewById(R.id.taskDescET);
         et_web = findViewById(R.id.taskWebPgET);
@@ -42,10 +56,9 @@ public class EditorActivity extends AppCompatActivity {
         et_imageS = findViewById(R.id.taskImageSET);
         et_lat = findViewById(R.id.taskLatET);
         et_lon = findViewById(R.id.taskLonET);
+        cb_urgent = findViewById(R.id.isUrgentCB);
 
-        String text = et_title.getText().toString();
-
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        mLocationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
 
         b_pDate.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
@@ -55,6 +68,22 @@ public class EditorActivity extends AppCompatActivity {
             }
         });
 
+
+        b_location.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                if (ContextCompat.checkSelfPermission(EditorActivity.this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+                    mLocationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, EditorActivity.this);
+                    Location location = mLocationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+                    et_lat.setText(String.valueOf(location.getLatitude()));
+                    et_lon.setText(String.valueOf(location.getLongitude()));
+                } else {
+                    requestPermissions(
+                            new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
+                            MY_PERMISSIONS_REQUEST_LOCATION);
+                }
+
+            }
+        });
     }
 
     @Override
@@ -63,33 +92,29 @@ public class EditorActivity extends AppCompatActivity {
         return true;
     }
 
-
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.save_task_item:
-
-                finish();
+                if (    et_title.getText().toString().trim().equalsIgnoreCase("") ||
+                        et_desc.getText().toString().trim().equalsIgnoreCase("") ||
+                        et_web.getText().toString().trim().equalsIgnoreCase("") ||
+                        et_date.getText().toString().trim().equalsIgnoreCase("") ||
+                        et_imageS.getText().toString().trim().equalsIgnoreCase("") ||
+                        et_lat.getText().toString().trim().equalsIgnoreCase("") ||
+                        et_lon.getText().toString().trim().equalsIgnoreCase("") ) {
+                    MainActivity.newToast(EditorActivity.this, getString(R.string.empty_fields));
+                } else {
+                    addTask();
+                    finish();
+                }
                 return true;
             case android.R.id.home:
-
-                if (areEmptyFields(et_title.getText().toString(),
-                        et_desc.getText().toString(),
-                        et_web.getText().toString(),
-                        et_date.getText().toString(),
-                        et_imageS.getText().toString(),
-                        et_lat.getText().toString(),
-                        et_lon.getText().toString())){
-                    MainActivity.newToast(EditorActivity.this,"hola");
-
-            }
-
                 this.finish();
                 return true;
         }
         return super.onOptionsItemSelected(item);
     }
-
 
 
     private DatePickerDialog.OnDateSetListener pDateSetListener = new DatePickerDialog.OnDateSetListener() {
@@ -103,26 +128,61 @@ public class EditorActivity extends AppCompatActivity {
         }
     };
 
-    public boolean areEmptyFields (String msg1, String msg2, String msg3, String msg4, String msg5, String msg6, String msg7){
-        if (msg1.isEmpty() || msg2.isEmpty() || msg3.isEmpty() || msg4.isEmpty() || msg5.isEmpty() || msg6.isEmpty() || msg7.isEmpty());
-        return true;
-    }
-
     private void addTask() {
 
-        Task dummyTask = new Task(getString(R.string.dummy_task_title_txt),
-                getString(R.string.dummy_task_description_txt),
-                getString(R.string.dummy_task_date_txt),
-                getString(R.string.dummy_task_webPage_txt),
-                Double.parseDouble(getString(R.string.dummy_task_lat_txt)),
-                Double.parseDouble(getString(R.string.dummy_task_lon_txt)),
+        Task newTask = new Task(et_title.getText().toString().trim(),
+                et_desc.getText().toString().trim(),
+                et_date.getText().toString().trim(),
+                et_web.getText().toString().trim(),
+                Double.parseDouble(et_lat.getText().toString().trim()),
+                Double.parseDouble(et_lon.getText().toString().trim()),
                 Boolean.parseBoolean(getString(R.string.dummy_task_isDone_txt)),
-                Boolean.parseBoolean(getString(R.string.dummy_task_isUrgent_txt)),
-                getString(R.string.dummy_task_imageS_txt));
-        dummyTask.save();
-        MainActivity.newToast(EditorActivity.this,getString(R.string.dummy_task_added_txt));
+                isItUrgent(),
+                et_imageS.getText().toString().trim());
+        newTask.save();
+        MainActivity.newToast(EditorActivity.this, getString(R.string.new_task_added_txt));
+    }
 
+    public boolean isItUrgent() {
+        if (cb_urgent.isChecked()) return true;
+        return false;
+    }
+
+
+    @Override
+    public void onLocationChanged(Location location) {
+    }
+
+    @Override
+    public void onStatusChanged(String provider, int status, Bundle extras) {
+
+    }
+
+    @Override
+    public void onProviderEnabled(String provider) {
+
+    }
+
+    @Override
+    public void onProviderDisabled(String provider) {
+
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        Log.v(getString(R.string.app_name), "onRequestPermissionsResult");
+        if (requestCode == MY_PERMISSIONS_REQUEST_LOCATION) {
+            // If request is cancelled, the result arrays are empty.
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                if (ContextCompat.checkSelfPermission(this,
+                        Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+                    mLocationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, this);
+                    mLocationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0, this);
+                }
+            }
+        }
     }
 
 
 }
+

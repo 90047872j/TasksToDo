@@ -23,6 +23,7 @@
             android:id="@+id/noTasksIV"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
             android:src="@drawable/notasks" />
 
         <TextView
