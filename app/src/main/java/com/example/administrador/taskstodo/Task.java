@@ -2,11 +2,13 @@ package com.example.administrador.taskstodo;
 
 import com.orm.SugarRecord;
 
+import java.io.Serializable;
+
 /**
  * Created by Juan Tavera on 31/10/2017.
  */
 
-public class Task extends SugarRecord<Task> {
+public class Task extends SugarRecord<Task> implements Serializable {
 
 String title;
 String description;

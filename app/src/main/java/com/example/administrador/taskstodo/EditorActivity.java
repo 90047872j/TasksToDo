@@ -38,7 +38,9 @@ public class EditorActivity extends AppCompatActivity implements LocationListene
     ImageButton b_pDate;
     ImageButton b_location;
     LocationManager mLocationManager;
+    Location retrieved_location;
     int MY_PERMISSIONS_REQUEST_LOCATION = 1;
+
 
     @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
@@ -59,6 +61,22 @@ public class EditorActivity extends AppCompatActivity implements LocationListene
         cb_urgent = findViewById(R.id.isUrgentCB);
 
         mLocationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
+        if (ContextCompat.checkSelfPermission(EditorActivity.this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+            mLocationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, EditorActivity.this);
+ //           retrieved_location = mLocationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+            b_location.setOnClickListener(new View.OnClickListener() {
+                public void onClick(View view) {
+                    if (retrieved_location != null) {
+                        et_lat.setText(String.valueOf(retrieved_location.getLatitude()));
+                        et_lon.setText(String.valueOf(retrieved_location.getLongitude()));
+                    }
+                }
+            });
+
+        } else {
+            requestPermissions(new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, MY_PERMISSIONS_REQUEST_LOCATION);
+        }
+
 
         b_pDate.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
@@ -67,24 +85,9 @@ public class EditorActivity extends AppCompatActivity implements LocationListene
                 dateDialog.show();
             }
         });
-
-
-        b_location.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View view) {
-                if (ContextCompat.checkSelfPermission(EditorActivity.this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
-                    mLocationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, EditorActivity.this);
-                    Location location = mLocationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-                    et_lat.setText(String.valueOf(location.getLatitude()));
-                    et_lon.setText(String.valueOf(location.getLongitude()));
-                } else {
-                    requestPermissions(
-                            new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
-                            MY_PERMISSIONS_REQUEST_LOCATION);
-                }
-
-            }
-        });
     }
+
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -151,6 +154,7 @@ public class EditorActivity extends AppCompatActivity implements LocationListene
 
     @Override
     public void onLocationChanged(Location location) {
+        retrieved_location = location;
     }
 
     @Override
@@ -185,4 +189,5 @@ public class EditorActivity extends AppCompatActivity implements LocationListene
 
 
 }
+
 

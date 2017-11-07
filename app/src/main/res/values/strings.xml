@@ -5,6 +5,7 @@
     <string name="task_desc_txt">Description:</string>
     <string name="task_date_txt">Entry date:</string>
     <string name="task_webPg_txt">Web Page:</string>
+    <string name="task_loc_txt">Location:</string>
     <string name="task_lat_txt">Latitude:</string>
     <string name="task_lon_txt">Longitude:</string>
     <string name="task_imageS_txt">Image Source:</string>
@@ -50,7 +51,6 @@
 
     <string name="button_yes">Yes</string>
     <string name="button_no">No</string>
-
 
 
 </resources>
