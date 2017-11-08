@@ -8,6 +8,7 @@
     <string name="task_loc_txt">Location:</string>
     <string name="task_lat_txt">Latitude:</string>
     <string name="task_lon_txt">Longitude:</string>
+    <string name="task_urgentCB_txt">Urgent</string>
     <string name="task_imageS_txt">Image Source:</string>
 
     <string name="task_title_hint">(E.g. Walk Dog)</string>
@@ -30,10 +31,10 @@
     <string name="deleted_tasks_txt">All Tasks deleted</string>
 
     <string name="empty_tasks_list_txt">No tasks found</string>
-    <string name="empty_view_txt">No Tasks found\nInsert a new task by clicking the options menu</string>
+    <string name="empty_view_txt">No Tasks found\nInsert a new task by clicking the options menu.</string>
 
     <string name="dummy_task_title_txt">Bathe Scooby-Doo</string>
-    <string name="dummy_task_description_txt">No time for mistery now, is bathing time because on Halloween night, the New England town of Salem was being haunted by the witch of Milissa Wilcox, who was burned at the stake in 1778. After receiving a distressed call from their friend Arlene Wilcox, a descendant of the accused witch, the gang arrived to help, despite being warned off by the town's mayor. The witch, it seems, looked exactly like Arlene. Soon after the gang's arrival, the townsfolk held a meeting and decided to take Arlene into custody and make her confess that she has been possessed by the witch. As Shaggy and Scooby prepared for Halloween, they encountered the witch.</string>
+    <string name="dummy_task_description_txt">No time for mistery now, is bathing time because on Halloween night, the New England town of Salem was being haunted by the witch of Milissa Wilcox, who was burned at the stake in 1778. After receiving a distressed call from their friend Arlene Wilcox, a descendant of the accused witch, the gang arrived to help, despite being warned off by the town\'s mayor. The witch, it seems, looked exactly like Arlene. Soon after the gang\'s arrival, the townsfolk held a meeting and decided to take Arlene into custody and make her confess that she has been possessed by the witch. As Shaggy and Scooby prepared for Halloween, they encountered the witch.</string>
     <string name="dummy_task_date_txt">09/11/2017</string>
     <string name="dummy_task_webPage_txt">https://www.cesarsway.com/dog-care/grooming/how-to-bathe-your-dog</string>
     <string name="dummy_task_lat_txt">41.39028201209704</string>

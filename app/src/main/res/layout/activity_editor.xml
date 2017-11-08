@@ -15,7 +15,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:layout_marginBottom="16dp">
 
             <TextView
                 android:layout_width="0dp"
@@ -23,6 +24,7 @@
                 android:layout_gravity="center"
                 android:layout_weight="1"
                 android:text="@string/task_title_txt"
+                android:textColor="@color/colorAccent"
                 android:textStyle="bold" />
 
             <EditText
@@ -30,7 +32,8 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="3"
-                android:hint="@string/task_title_hint" />
+                android:hint="@string/task_title_hint"
+                android:textColor="@color/colorBlack" />
 
         </LinearLayout>
 
@@ -38,18 +41,23 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/task_desc_txt"
-            android:textStyle="bold" />
+            android:textColor="@color/colorAccent"
+            android:textStyle="bold"
+            android:layout_marginBottom="8dp"/>
 
         <EditText
             android:id="@+id/taskDescET"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/task_desc_hint" />
+            android:hint="@string/task_desc_hint"
+            android:textColor="@color/colorBlack"
+            android:layout_marginBottom="16dp"/>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:layout_marginBottom="16dp">
 
             <TextView
                 android:layout_width="0dp"
@@ -57,6 +65,7 @@
                 android:layout_gravity="center"
                 android:layout_weight="1"
                 android:text="@string/task_webPg_txt"
+                android:textColor="@color/colorAccent"
                 android:textStyle="bold" />
 
             <EditText
@@ -65,14 +74,16 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="3"
                 android:hint="@string/task_webPg_hint"
-                android:inputType="textWebEditText" />
+                android:inputType="textWebEditText"
+                android:textColor="@color/colorBlack" />
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:layout_marginBottom="16dp">
 
             <TextView
                 android:layout_width="0dp"
@@ -80,6 +91,7 @@
                 android:layout_gravity="center"
                 android:layout_weight="1"
                 android:text="@string/task_imageS_txt"
+                android:textColor="@color/colorAccent"
                 android:textStyle="bold" />
 
             <EditText
@@ -88,14 +100,16 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="3"
                 android:hint="@string/task_imageS_hint"
-                android:inputType="textWebEditText" />
+                android:inputType="textWebEditText"
+                android:textColor="@color/colorBlack" />
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:layout_marginBottom="16dp">
 
             <TextView
                 android:layout_width="0dp"
@@ -103,6 +117,7 @@
                 android:layout_gravity="center"
                 android:layout_weight="1"
                 android:text="@string/task_date_txt"
+                android:textColor="@color/colorAccent"
                 android:textStyle="bold" />
 
             <EditText
@@ -114,7 +129,8 @@
                 android:gravity="center"
                 android:hint="@string/task_date_hint"
                 android:inputType="date"
-                android:maxLength="10" />
+                android:maxLength="10"
+                android:textColor="@color/colorBlack" />
 
 
             <ImageButton
@@ -131,23 +147,28 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:layout_marginBottom="16dp">
 
             <LinearLayout
                 android:layout_width="0dp"
-                android:layout_weight="1"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:orientation="vertical">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="4dp"
                     android:text="@string/task_loc_txt"
+                    android:textColor="@color/colorAccent"
                     android:textStyle="bold" />
+
                 <TextView
                     android:id="@+id/locNotAvailableTV"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+
                     android:text="@string/location_not_avaible"
                     android:textColor="@color/colorRed"
                     android:textStyle="bold" />
@@ -170,6 +191,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/task_lat_txt"
+                        android:textColor="@color/colorAccent"
+                        android:layout_marginBottom="8dp"
                         android:textStyle="bold" />
 
                     <EditText
@@ -177,7 +200,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="@string/task_lat_hint"
-                        android:inputType="numberDecimal" />
+                        android:inputType="numberDecimal"
+                        android:gravity="center"
+                        android:textColor="@color/colorBlack" />
 
                 </LinearLayout>
 
@@ -189,17 +214,19 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-
                         android:layout_weight="2"
                         android:text="@string/task_lon_txt"
+                        android:layout_marginBottom="8dp"
+                        android:textColor="@color/colorAccent"
                         android:textStyle="bold" />
-
                     <EditText
                         android:id="@+id/taskLonET"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="@string/task_lon_hint"
-                        android:inputType="numberDecimal" />
+                        android:gravity="center"
+                        android:inputType="numberDecimal"
+                        android:textColor="@color/colorBlack" />
 
                 </LinearLayout>
 
@@ -220,6 +247,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Urgent"
+            android:textColor="@color/colorAccent"
             android:textStyle="bold" />
 
     </LinearLayout>
