@@ -24,6 +24,7 @@ public class DetailsActivity extends AppCompatActivity {
     ImageView im_task;
     ImageButton b_open_map;
     CheckBox cb_isUrgent;
+    Task currentTask;
 
 
     @Override
@@ -33,7 +34,7 @@ public class DetailsActivity extends AppCompatActivity {
         getSupportActionBar().setTitle(R.string.detailsActivity_title);
 
 
-        final Task currentTask = (Task) getIntent().getSerializableExtra("selectedTask");
+        currentTask = (Task) getIntent().getSerializableExtra("selectedTask");
         tv_title_task = findViewById(R.id.taskTitleTV);
         tv_date_task = findViewById(R.id.taskDateTV);
         tv_desc_task = findViewById(R.id.taskDescTV);
@@ -61,8 +62,10 @@ public class DetailsActivity extends AppCompatActivity {
 
         if (currentTask.isDone()){
             tv_title_task.setTypeface(null, Typeface.BOLD);
-        }
 
+            tv_taskTitle.setTextColor(ContextCompat.getColor(getContext(), R.color.colorGreen));
+
+        }
 
             b_open_map.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {

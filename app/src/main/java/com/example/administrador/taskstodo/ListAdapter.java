@@ -44,6 +44,11 @@ public class ListAdapter extends ArrayAdapter<Task> {
         if (data.get(position).isDone()) {
            // tv_taskDate.setCompoundDrawablesWithIntrinsicBounds(R.drawable.success, 0, 0, 0);
 
+
+            tv_taskTitle.setTypeface(null, Typeface.BOLD);
+
+
+
             int imgResource = R.drawable.success;
             tv_taskDate.setCompoundDrawablesWithIntrinsicBounds(imgResource, 0, 0, 0);
 

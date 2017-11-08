@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">TasksToDo</string>
+    <string name="app_name">ToDo</string>
 
     <string name="task_title_txt">Title:</string>
     <string name="task_desc_txt">Description:</string>
@@ -24,6 +24,7 @@
     <string name="action_insert_dummy_data">Insert Dummy Task</string>
     <string name="action_delete_all_entries">Delete All Tasks</string>
 
+
     <string name="new_task_added_txt">New Task added</string>
     <string name="dummy_task_added_txt">Dummy Task added</string>
     <string name="deleted_tasks_txt">All Tasks deleted</string>
@@ -32,7 +33,7 @@
     <string name="empty_view_txt">No Tasks found\nInsert a new task by clicking the options menu</string>
 
     <string name="dummy_task_title_txt">Bathe Scooby-Doo</string>
-    <string name="dummy_task_description_txt">No time for mistery now, is bathing time</string>
+    <string name="dummy_task_description_txt">No time for mistery now, is bathing time because on Halloween night, the New England town of Salem was being haunted by the witch of Milissa Wilcox, who was burned at the stake in 1778. After receiving a distressed call from their friend Arlene Wilcox, a descendant of the accused witch, the gang arrived to help, despite being warned off by the town's mayor. The witch, it seems, looked exactly like Arlene. Soon after the gang's arrival, the townsfolk held a meeting and decided to take Arlene into custody and make her confess that she has been possessed by the witch. As Shaggy and Scooby prepared for Halloween, they encountered the witch.</string>
     <string name="dummy_task_date_txt">09/11/2017</string>
     <string name="dummy_task_webPage_txt">https://www.cesarsway.com/dog-care/grooming/how-to-bathe-your-dog</string>
     <string name="dummy_task_lat_txt">41.39028201209704</string>
@@ -42,6 +43,9 @@
     <string name="dummy_task_imageS_txt">https://vignette.wikia.nocookie.net/scoobydoo/images/5/5a/Bathtub.png/revision/latest?cb=20150404165750</string>
 
     <string name="delete_all_dialogl_message">Delete all tasks?</string>
+
+    <string name="delete_one_dialogl_message">Delete current tasks?</string>
+
     <string name="delete_dialog_button_cancel">Cancel</string>
     <string name="confirmation_dialog_title">Confirmation</string>
 

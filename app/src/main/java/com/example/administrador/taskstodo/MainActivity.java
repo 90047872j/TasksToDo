@@ -60,6 +60,7 @@ public class MainActivity extends AppCompatActivity {
 
                             public void onClick(DialogInterface dialog,int id) {
                                 selectedTask.setDone(true);
+                                selectedTask.save;
                                 MainActivity.newToast(MainActivity.this,getString(R.string.task_marked_done));
                                 refreshList(tasks,mAdapter);
                             }
