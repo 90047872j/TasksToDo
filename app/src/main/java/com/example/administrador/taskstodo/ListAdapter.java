@@ -2,6 +2,8 @@ package com.example.administrador.taskstodo;
 
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Typeface;
+import android.graphics.drawable.Drawable;
 import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,9 +20,9 @@ public class ListAdapter extends ArrayAdapter<Task> {
     Context context;
     List<Task> data;
 
-    public ListAdapter(Context context, int layoutResourceId, List<Task> data){
+    public ListAdapter(Context context, int layoutResourceId, List<Task> data) {
 
-        super (context, layoutResourceId, data);
+        super(context, layoutResourceId, data);
         this.layoutResourceId = layoutResourceId;
         this.context = context;
         this.data = data;
@@ -39,8 +41,16 @@ public class ListAdapter extends ArrayAdapter<Task> {
         if (data.get(position).isUrgent())
             tv_taskTitle.setTextColor(ContextCompat.getColor(getContext(), R.color.colorRed));
 
+        if (data.get(position).isDone()) {
+           // tv_taskDate.setCompoundDrawablesWithIntrinsicBounds(R.drawable.success, 0, 0, 0);
+
+            int imgResource = R.drawable.success;
+            tv_taskDate.setCompoundDrawablesWithIntrinsicBounds(imgResource, 0, 0, 0);
+
+
+
+
+        }
         return row;
-
     }
-
 }

@@ -22,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
     ListView mlist;
     List<Task> tasks;
     ListAdapter mAdapter;
+    Task selectedTask;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,15 +35,46 @@ public class MainActivity extends AppCompatActivity {
         mAdapter = new ListAdapter(this, R.layout.row, tasks);
         mlist.setAdapter(mAdapter);
         mAdapter.notifyDataSetChanged();
+
         mlist.setOnItemClickListener(new AdapterView.OnItemClickListener() {
         @Override
         public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
             Intent intent = new Intent(MainActivity.this, DetailsActivity.class);
-            Task selectedTask =  (Task) mlist.getItemAtPosition(position);
+            selectedTask =  (Task) mlist.getItemAtPosition(position);
             intent.putExtra("selectedTask", selectedTask);
             startActivity(intent);
         }
     });
+
+        mlist.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            int position;
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view,  final int position, long id) {
+                selectedTask =  (Task) mlist.getItemAtPosition(position);
+                android.support.v7.app.AlertDialog.Builder alertDialogBuilder = new android.support.v7.app.AlertDialog.Builder(MainActivity.this);
+                alertDialogBuilder.setTitle(R.string.confirmation_dialog_title);
+                alertDialogBuilder.setMessage(R.string.mark_done_dialog);
+                alertDialogBuilder
+                        .setCancelable(false)
+                        .setPositiveButton(R.string.button_yes,new DialogInterface.OnClickListener() {
+
+                            public void onClick(DialogInterface dialog,int id) {
+                                selectedTask.setDone(true);
+                                MainActivity.newToast(MainActivity.this,getString(R.string.task_marked_done));
+                                refreshList(tasks,mAdapter);
+                            }
+                        })
+                        .setNegativeButton(R.string.button_no,new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog,int id) {
+                                dialog.cancel();
+                            }
+                        });
+                android.support.v7.app.AlertDialog alertDialog = alertDialogBuilder.create();
+                alertDialog.show();
+
+                return true;
+            }
+        });
 }
 
     @Override

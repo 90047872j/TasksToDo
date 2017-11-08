@@ -70,6 +70,7 @@ public class EditorActivity extends AppCompatActivity implements LocationListene
         if (ContextCompat.checkSelfPermission(EditorActivity.this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
             mLocationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, EditorActivity.this);
             //           retrieved_location = mLocationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+
             b_location.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View view) {
                     if (retrieved_location == null) {
@@ -147,7 +148,7 @@ public class EditorActivity extends AppCompatActivity implements LocationListene
                 et_web.getText().toString().trim(),
                 Double.parseDouble(et_lat.getText().toString().trim()),
                 Double.parseDouble(et_lon.getText().toString().trim()),
-                Boolean.parseBoolean(getString(R.string.dummy_task_isDone_txt)),
+                false,
                 isItUrgent(),
                 et_imageS.getText().toString().trim());
         newTask.save();

@@ -1,9 +1,11 @@
 package com.example.administrador.taskstodo;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -21,6 +23,7 @@ public class DetailsActivity extends AppCompatActivity {
     TextView tv_loc_task;
     ImageView im_task;
     ImageButton b_open_map;
+    CheckBox cb_isUrgent;
 
 
     @Override
@@ -39,6 +42,8 @@ public class DetailsActivity extends AppCompatActivity {
         tv_loc_task = findViewById(R.id.taskLocTV);
         im_task= findViewById(R.id.taskImageIV);
         b_open_map = findViewById(R.id.openMapB);
+        cb_isUrgent = findViewById(R.id.isUrgentCB);
+        cb_isUrgent.setEnabled(false);
 
         tv_title_task.setText(currentTask.getTitle().toString());
         tv_date_task.setText(currentTask.getDate().toString());
@@ -48,7 +53,18 @@ public class DetailsActivity extends AppCompatActivity {
         tv_loc_task.setText(currentTask.getLatitude()+currentTask.getLongitude().toString());
         Picasso.with(this).load(tv_imageS_task.getText().toString()).into(im_task);
 
-        b_open_map.setOnClickListener(new View.OnClickListener() {
+
+        if (currentTask.isUrgent()){
+            cb_isUrgent.setChecked(true);
+
+        }
+
+        if (currentTask.isDone()){
+            tv_title_task.setTypeface(null, Typeface.BOLD);
+        }
+
+
+            b_open_map.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
 
                 Intent intent = new Intent(DetailsActivity.this, MapsActivity.class);

@@ -38,12 +38,15 @@
     <string name="dummy_task_lat_txt">41.39028201209704</string>
     <string name="dummy_task_lon_txt">2.1881286799907684</string>
     <string name="dummy_task_isDone_txt">false</string>
-    <string name="dummy_task_isUrgent_txt">true</string>
+    <string name="dummy_task_isUrgent_txt">false</string>
     <string name="dummy_task_imageS_txt">https://vignette.wikia.nocookie.net/scoobydoo/images/5/5a/Bathtub.png/revision/latest?cb=20150404165750</string>
 
     <string name="delete_all_dialogl_message">Delete all tasks?</string>
     <string name="delete_dialog_button_cancel">Cancel</string>
     <string name="confirmation_dialog_title">Confirmation</string>
+
+    <string name="mark_done_dialog">Mark this task done?</string>
+    <string name="task_marked_done">Task successfully marked done</string>
 
     <string name="empty_fields">No fields can be empty</string>
     <string name="editorActivity_title">Create New Task</string>
@@ -55,6 +58,16 @@
 
     <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">AIzaSyDbaGACHqV9PVbqQOf8Hcl47kWLxppp6QA</string>
     <string name="title_activity_maps">Map</string>
+    <string name="title_activity_login">Sign in</string>
+
+    <string name="email_tv_txt">User (Email):</string>
+    <string name="password_tv_txt">Password:</string>
+
+    <string name="emailLI_hint">Insert your email</string>
+    <string name="password_LI_hint">Insert password</string>
+    <string name="login_button_txt">log in</string>
+
+    <string name="short_password">Password must contain al least 6 characters</string>
 
 
 </resources>
