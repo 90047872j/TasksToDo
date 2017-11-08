@@ -20,6 +20,7 @@ import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
 import java.util.Calendar;
 
@@ -34,6 +35,7 @@ public class EditorActivity extends AppCompatActivity implements LocationListene
     EditText et_imageS;
     EditText et_lat;
     EditText et_lon;
+    TextView tv_LocNA;
     CheckBox cb_urgent;
     ImageButton b_pDate;
     ImageButton b_location;
@@ -48,9 +50,11 @@ public class EditorActivity extends AppCompatActivity implements LocationListene
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_editor);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setTitle(R.string.EditorActivity_title);;
+        getSupportActionBar().setTitle(R.string.editorActivity_title);
+
         b_pDate = findViewById(R.id.dateB);
         b_location = findViewById(R.id.locationB);
+        tv_LocNA = findViewById(R.id.locNotAvailableTV);
         et_title = findViewById(R.id.taskTitleET);
         et_desc = findViewById(R.id.taskDescET);
         et_web = findViewById(R.id.taskWebPgET);
@@ -60,15 +64,20 @@ public class EditorActivity extends AppCompatActivity implements LocationListene
         et_lon = findViewById(R.id.taskLonET);
         cb_urgent = findViewById(R.id.isUrgentCB);
 
+        tv_LocNA.setVisibility(View.GONE);
+
         mLocationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
         if (ContextCompat.checkSelfPermission(EditorActivity.this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
             mLocationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, EditorActivity.this);
- //           retrieved_location = mLocationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+            //           retrieved_location = mLocationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
             b_location.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View view) {
-                    if (retrieved_location != null) {
+                    if (retrieved_location == null) {
+                        tv_LocNA.setVisibility(view.VISIBLE);
+                    } else {
                         et_lat.setText(String.valueOf(retrieved_location.getLatitude()));
                         et_lon.setText(String.valueOf(retrieved_location.getLongitude()));
+                        tv_LocNA.setVisibility(view.GONE);
                     }
                 }
             });
@@ -88,7 +97,6 @@ public class EditorActivity extends AppCompatActivity implements LocationListene
     }
 
 
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_editor, menu);
@@ -99,13 +107,13 @@ public class EditorActivity extends AppCompatActivity implements LocationListene
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.save_task_item:
-                if (    et_title.getText().toString().trim().equalsIgnoreCase("") ||
+                if (et_title.getText().toString().trim().equalsIgnoreCase("") ||
                         et_desc.getText().toString().trim().equalsIgnoreCase("") ||
                         et_web.getText().toString().trim().equalsIgnoreCase("") ||
                         et_date.getText().toString().trim().equalsIgnoreCase("") ||
                         et_imageS.getText().toString().trim().equalsIgnoreCase("") ||
                         et_lat.getText().toString().trim().equalsIgnoreCase("") ||
-                        et_lon.getText().toString().trim().equalsIgnoreCase("") ) {
+                        et_lon.getText().toString().trim().equalsIgnoreCase("")) {
                     MainActivity.newToast(EditorActivity.this, getString(R.string.empty_fields));
                 } else {
                     addTask();

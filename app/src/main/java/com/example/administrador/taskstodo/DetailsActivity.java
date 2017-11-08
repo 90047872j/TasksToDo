@@ -1,5 +1,6 @@
 package com.example.administrador.taskstodo;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -26,8 +27,10 @@ public class DetailsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_details);
-        Task currentTask = (Task) getIntent().getSerializableExtra("selectedTask");
+        getSupportActionBar().setTitle(R.string.detailsActivity_title);
 
+
+        final Task currentTask = (Task) getIntent().getSerializableExtra("selectedTask");
         tv_title_task = findViewById(R.id.taskTitleTV);
         tv_date_task = findViewById(R.id.taskDateTV);
         tv_desc_task = findViewById(R.id.taskDescTV);
@@ -43,17 +46,15 @@ public class DetailsActivity extends AppCompatActivity {
         tv_imageS_task.setText(currentTask.getImageSource().toString());
         tv_web_task.setText(currentTask.getWebPage().toString());
         tv_loc_task.setText(currentTask.getLatitude()+currentTask.getLongitude().toString());
-
-
         Picasso.with(this).load(tv_imageS_task.getText().toString()).into(im_task);
-
 
         b_open_map.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
 
+                Intent intent = new Intent(DetailsActivity.this, MapsActivity.class);
+                intent.putExtra("currentTask", currentTask);
+                startActivity(intent);
             }
         });
-
-
     }
 }

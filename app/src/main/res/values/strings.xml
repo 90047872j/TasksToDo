@@ -46,11 +46,15 @@
     <string name="confirmation_dialog_title">Confirmation</string>
 
     <string name="empty_fields">No fields can be empty</string>
-
-    <string name="EditorActivity_title">Create New Task</string>
-
+    <string name="editorActivity_title">Create New Task</string>
+    <string name="detailsActivity_title">Task Details</string>
     <string name="button_yes">Yes</string>
     <string name="button_no">No</string>
+
+    <string name="location_not_avaible">Auto-Location not available</string>
+
+    <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">AIzaSyDbaGACHqV9PVbqQOf8Hcl47kWLxppp6QA</string>
+    <string name="title_activity_maps">Map</string>
 
 
 </resources>
