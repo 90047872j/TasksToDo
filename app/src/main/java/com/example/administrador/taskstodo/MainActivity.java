@@ -1,11 +1,9 @@
 package com.example.administrador.taskstodo;
 
 import android.app.AlertDialog;
-import android.content.ContentUris;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -41,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
         public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
             Intent intent = new Intent(MainActivity.this, DetailsActivity.class);
             selectedTask =  (Task) mlist.getItemAtPosition(position);
-            intent.putExtra("selectedTask", selectedTask);
+            intent.putExtra("selectedTask", selectedTask.getId());
             startActivity(intent);
         }
     });
@@ -60,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
 
                             public void onClick(DialogInterface dialog,int id) {
                                 selectedTask.setDone(true);
-                                selectedTask.save;
+                                selectedTask.save();
                                 MainActivity.newToast(MainActivity.this,getString(R.string.task_marked_done));
                                 refreshList(tasks,mAdapter);
                             }
@@ -135,7 +133,7 @@ public class MainActivity extends AppCompatActivity {
     private void showDeleteConfirmationDialog() {
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setMessage(R.string.delete_all_dialogl_message);
+        builder.setMessage(R.string.delete_all_dialog_message);
         builder.setPositiveButton(R.string.action_delete, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
                 deleteAllTasks();

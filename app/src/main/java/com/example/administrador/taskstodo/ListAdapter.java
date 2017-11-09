@@ -34,18 +34,18 @@ public class ListAdapter extends ArrayAdapter<Task> {
         LayoutInflater inflater = ((Activity) context).getLayoutInflater();
         row = inflater.inflate(layoutResourceId, parent, false);
         TextView tv_taskDate = row.findViewById(R.id.taskDateRow);
-        TextView tv_taskTitle = row.findViewById(R.id.taskNameRow);
+        TextView tv_title_task_ad = row.findViewById(R.id.taskNameRow);
         tv_taskDate.setText(data.get(position).getDate());
-        tv_taskTitle.setText(data.get(position).getTitle());
+        tv_title_task_ad.setText(data.get(position).getTitle());
 
         if (data.get(position).isUrgent())
-            tv_taskTitle.setTextColor(ContextCompat.getColor(getContext(), R.color.colorRed));
+            tv_title_task_ad.setTextColor(ContextCompat.getColor(getContext(), R.color.colorRed));
 
         if (data.get(position).isDone()) {
            // tv_taskDate.setCompoundDrawablesWithIntrinsicBounds(R.drawable.success, 0, 0, 0);
 
 
-            tv_taskTitle.setTypeface(null, Typeface.BOLD);
+            tv_title_task_ad.setTypeface(null, Typeface.BOLD);
 
 
 

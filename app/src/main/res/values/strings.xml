@@ -26,9 +26,11 @@
     <string name="action_delete_all_entries">Delete All Tasks</string>
 
 
-    <string name="new_task_added_txt">New Task added</string>
+    <string name="task_added_txt">Task  \"REPLACEMENT\" added</string>
     <string name="dummy_task_added_txt">Dummy Task added</string>
     <string name="deleted_tasks_txt">All Tasks deleted</string>
+    <string name="deleted_task_txt">Task \"REPLACEMENT\" deleted successfully</string>
+
 
     <string name="empty_tasks_list_txt">No tasks found</string>
     <string name="empty_view_txt">No Tasks found\nInsert a new task by clicking the options menu.</string>
@@ -43,9 +45,9 @@
     <string name="dummy_task_isUrgent_txt">false</string>
     <string name="dummy_task_imageS_txt">https://vignette.wikia.nocookie.net/scoobydoo/images/5/5a/Bathtub.png/revision/latest?cb=20150404165750</string>
 
-    <string name="delete_all_dialogl_message">Delete all tasks?</string>
+    <string name="delete_all_dialog_message">Delete all tasks?</string>
 
-    <string name="delete_one_dialogl_message">Delete current tasks?</string>
+    <string name="delete_one_dialog_message">Delete current tasks?</string>
 
     <string name="delete_dialog_button_cancel">Cancel</string>
     <string name="confirmation_dialog_title">Confirmation</string>

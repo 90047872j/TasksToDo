@@ -152,7 +152,8 @@ public class EditorActivity extends AppCompatActivity implements LocationListene
                 isItUrgent(),
                 et_imageS.getText().toString().trim());
         newTask.save();
-        MainActivity.newToast(EditorActivity.this, getString(R.string.new_task_added_txt));
+        MainActivity.newToast(EditorActivity.this,getString(R.string.task_added_txt).replace("REPLACEMENT",newTask.getTitle().toString()));
+
     }
 
     public boolean isItUrgent() {
