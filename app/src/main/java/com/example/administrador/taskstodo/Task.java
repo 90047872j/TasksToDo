@@ -10,16 +10,32 @@ import java.io.Serializable;
 
 public class Task extends SugarRecord<Task> implements Serializable {
 
-String title;
-String description;
-String date;
-String webPage;
-Double latitude;
-Double longitude;
-Boolean done;
-Boolean urgent;
-String imageSource;
+    String title;
+    String description;
+    String date;
+    String webPage;
+    Double latitude;
+    Double longitude;
+    Boolean done;
+    Boolean urgent;
+    String imageSource;
 
+
+    public Task() {
+    }
+
+    public Task(String title, String description, String date, String webPage, Double latitude, Double longitude, Boolean done, Boolean urgent, String imageSource) {
+        this.title = title;
+        this.description = description;
+        this.date = date;
+        this.webPage = webPage;
+        this.latitude = latitude;
+        this.longitude = longitude;
+        this.done = done;
+        this.urgent = urgent;
+        this.imageSource = imageSource;
+
+    }
 
     public String getTitle() {
         return title;
@@ -91,21 +107,5 @@ String imageSource;
 
     public void setImageSource(String imageSource) {
         this.imageSource = imageSource;
-    }
-
-    public Task() {
-    }
-
-    public Task(String title, String description, String date, String webPage, Double latitude, Double longitude, Boolean done, Boolean urgent, String imageSource) {
-        this.title = title;
-        this.description = description;
-        this.date = date;
-        this.webPage = webPage;
-        this.latitude = latitude;
-        this.longitude = longitude;
-        this.done = done;
-        this.urgent = urgent;
-        this.imageSource = imageSource;
-
     }
 }

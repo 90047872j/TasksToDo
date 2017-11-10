@@ -6,7 +6,6 @@
     android:orientation="vertical"
     tools:context="com.example.administrador.taskstodo.LoginActivity">
 
-
     <LinearLayout
         android:id="@+id/container_layout"
         android:layout_width="match_parent"
@@ -19,44 +18,44 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:layout_marginBottom="8dp"
             android:text="@string/email_tv_txt"
             android:textColor="@color/colorAccent"
             android:textSize="20dp"
-            android:layout_marginBottom="8dp"
             android:textStyle="bold" />
 
         <EditText
             android:id="@+id/emailLI_ET"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
             android:gravity="center"
+            android:hint="@string/emailLI_hint"
             android:inputType="textEmailAddress"
             android:maxLines="1"
-            android:textColor="@color/colorBlack"
-            android:layout_marginBottom="8dp"
-            android:hint="@string/emailLI_hint" />
+            android:textColor="@color/colorBlack" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:textColor="@color/colorAccent"
-            android:textSize="20dp"
             android:layout_marginBottom="8dp"
             android:text="@string/password_tv_txt"
+            android:textColor="@color/colorAccent"
+            android:textSize="20dp"
             android:textStyle="bold" />
 
         <EditText
             android:id="@+id/password_LIET"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textPassword"
+            android:layout_marginBottom="16dp"
             android:gravity="center"
-            android:maxLines="1"
-            android:textColor="@color/colorBlack"
-            android:maxLength="20"
             android:hint="@string/password_LI_hint"
-            android:layout_marginBottom="16dp"/>
+            android:inputType="textPassword"
+            android:maxLength="20"
+            android:maxLines="1"
+            android:textColor="@color/colorBlack" />
 
         <Button
             android:id="@+id/loginB"
@@ -64,10 +63,10 @@
             android:layout_height="56dp"
             android:layout_gravity="center"
             android:background="@drawable/rounded_button"
+            android:text="@string/login_button_txt"
             android:textColor="@color/colorWhite"
             android:textSize="20dp"
-            android:textStyle="bold"
-            android:text="@string/login_button_txt" />
+            android:textStyle="bold" />
     </LinearLayout>
 
 </RelativeLayout>

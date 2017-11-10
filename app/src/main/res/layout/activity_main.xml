@@ -21,8 +21,8 @@
 
         <ImageView
             android:id="@+id/noTasksIV"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
             android:layout_centerInParent="true"
             android:src="@drawable/notasks" />
 
@@ -35,10 +35,10 @@
             android:layout_centerInParent="true"
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
-            android:textSize="18sp"
             android:fontFamily="sans-serif-medium"
             android:text="@string/empty_view_txt"
-            android:textAlignment="center" />
+            android:textAlignment="center"
+            android:textSize="16sp" />
 
     </RelativeLayout>
 

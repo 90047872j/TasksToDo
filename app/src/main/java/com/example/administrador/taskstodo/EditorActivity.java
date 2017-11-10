@@ -42,7 +42,15 @@ public class EditorActivity extends AppCompatActivity implements LocationListene
     LocationManager mLocationManager;
     Location retrieved_location;
     int MY_PERMISSIONS_REQUEST_LOCATION = 1;
-
+    private DatePickerDialog.OnDateSetListener pDateSetListener = new DatePickerDialog.OnDateSetListener() {
+        public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+            String fromDay = Integer.toString(dayOfMonth);
+            String fromMonth = Integer.toString(monthOfYear + 1);
+            if (fromDay.length() == 1) fromDay = "0" + fromDay;
+            if (fromMonth.length() == 1) fromMonth = "0" + fromMonth;
+            et_date.setText(fromDay + "/" + fromMonth + "/" + year);
+        }
+    };
 
     @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
@@ -51,7 +59,6 @@ public class EditorActivity extends AppCompatActivity implements LocationListene
         setContentView(R.layout.activity_editor);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle(R.string.editorActivity_title);
-
         b_pDate = findViewById(R.id.dateB);
         b_location = findViewById(R.id.locationB);
         tv_LocNA = findViewById(R.id.locNotAvailableTV);
@@ -63,14 +70,11 @@ public class EditorActivity extends AppCompatActivity implements LocationListene
         et_lat = findViewById(R.id.taskLatET);
         et_lon = findViewById(R.id.taskLonET);
         cb_urgent = findViewById(R.id.isUrgentCB);
-
         tv_LocNA.setVisibility(View.GONE);
 
         mLocationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
         if (ContextCompat.checkSelfPermission(EditorActivity.this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
             mLocationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, EditorActivity.this);
-            //           retrieved_location = mLocationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-
             b_location.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View view) {
                     if (retrieved_location == null) {
@@ -96,7 +100,6 @@ public class EditorActivity extends AppCompatActivity implements LocationListene
             }
         });
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -128,20 +131,7 @@ public class EditorActivity extends AppCompatActivity implements LocationListene
         return super.onOptionsItemSelected(item);
     }
 
-
-    private DatePickerDialog.OnDateSetListener pDateSetListener = new DatePickerDialog.OnDateSetListener() {
-        public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-
-            String fromDay = Integer.toString(dayOfMonth);
-            String fromMonth = Integer.toString(monthOfYear + 1);
-            if (fromDay.length() == 1) fromDay = "0" + fromDay;
-            if (fromMonth.length() == 1) fromMonth = "0" + fromMonth;
-            et_date.setText(fromDay + "/" + fromMonth + "/" + year);
-        }
-    };
-
     private void addTask() {
-
         Task newTask = new Task(et_title.getText().toString().trim(),
                 et_desc.getText().toString().trim(),
                 et_date.getText().toString().trim(),
@@ -152,15 +142,13 @@ public class EditorActivity extends AppCompatActivity implements LocationListene
                 isItUrgent(),
                 et_imageS.getText().toString().trim());
         newTask.save();
-        MainActivity.newToast(EditorActivity.this,getString(R.string.task_added_txt).replace("REPLACEMENT",newTask.getTitle().toString()));
-
+        MainActivity.newToast(EditorActivity.this, getString(R.string.task_added_txt).replace("REPLACEMENT", newTask.getTitle().toString()));
     }
 
     public boolean isItUrgent() {
         if (cb_urgent.isChecked()) return true;
         return false;
     }
-
 
     @Override
     public void onLocationChanged(Location location) {
@@ -197,7 +185,4 @@ public class EditorActivity extends AppCompatActivity implements LocationListene
         }
     }
 
-
 }
-
-
