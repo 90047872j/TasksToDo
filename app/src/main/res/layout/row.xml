@@ -12,16 +12,16 @@
         android:id="@+id/taskDateRow"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="6dp"
-        android:layout_marginLeft="6dp"
-        android:layout_marginRight="4dp"
-        android:layout_marginTop="6dp"
+        android:layout_marginBottom="@dimen/dimen6"
+        android:layout_marginLeft="@dimen/dimen6"
+        android:layout_marginRight="@dimen/dimen4"
+        android:layout_marginTop="@dimen/dimen6"
         android:layout_weight="1"
         android:drawableLeft="@drawable/calendar"
         android:gravity="center"
         android:text="@string/dummy_task_date_txt"
         android:textColor="@color/colorBlack"
-        android:textSize="16dp" />
+        android:textSize="@dimen/text_dimen16" />
 
     <TextView
         android:id="@+id/taskNameRow"
@@ -29,10 +29,10 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="6dp"
         android:layout_marginRight="6dp"
-        android:layout_marginTop="6dp"
+        android:layout_marginTop="@dimen/dimen6"
         android:layout_weight="2"
         android:text="@string/dummy_task_title_txt"
         android:textColor="@color/colorBlack"
-        android:textSize="16dp" />
+        android:textSize="@dimen/text_dimen16" />
 
 </LinearLayout>

@@ -1,4 +1,21 @@
 <resources>
     <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="main_margin_size">16dp</dimen>
+    <dimen name="image_details_size">300dp</dimen>
+    <dimen name="no_image_size">200dp</dimen>
+    <dimen name="dimen1">1dp</dimen>
+    <dimen name="dimen2">2dp</dimen>
+    <dimen name="dimen4">4dp</dimen>
+    <dimen name="dimen6">6dp</dimen>
+    <dimen name="dimen8">8dp</dimen>
+    <dimen name="dimen10">10dp</dimen>
+    <dimen name="dimen26">26dp</dimen>
+    <dimen name="dimen40">40dp</dimen>
+    <dimen name="text_dimen16">16sp</dimen>
+    <dimen name="text_dimen20">20sp</dimen>
+    <dimen name="text_dimen25">25sp</dimen>
+    <dimen name="button_size">56dp</dimen>
+    <dimen name="button_double_size">112dp</dimen>
+
 
 </resources>

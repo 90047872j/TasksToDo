@@ -11,24 +11,24 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:layout_margin="40dp"
+        android:layout_margin="@dimen/dimen40"
         android:orientation="vertical">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginBottom="8dp"
+            android:layout_marginBottom="@dimen/dimen8"
             android:text="@string/email_tv_txt"
             android:textColor="@color/colorAccent"
-            android:textSize="20dp"
+            android:textSize="@dimen/text_dimen20"
             android:textStyle="bold" />
 
         <EditText
             android:id="@+id/emailLI_ET"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
+            android:layout_marginBottom="@dimen/dimen8"
             android:gravity="center"
             android:hint="@string/emailLI_hint"
             android:inputType="textEmailAddress"
@@ -39,17 +39,17 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginBottom="8dp"
+            android:layout_marginBottom="@dimen/dimen8"
             android:text="@string/password_tv_txt"
             android:textColor="@color/colorAccent"
-            android:textSize="20dp"
+            android:textSize="@dimen/text_dimen20"
             android:textStyle="bold" />
 
         <EditText
             android:id="@+id/password_LIET"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
+            android:layout_marginBottom="@dimen/main_margin_size"
             android:gravity="center"
             android:hint="@string/password_LI_hint"
             android:inputType="textPassword"
@@ -59,13 +59,13 @@
 
         <Button
             android:id="@+id/loginB"
-            android:layout_width="112dp"
-            android:layout_height="56dp"
+            android:layout_width="@dimen/button_double_size"
+            android:layout_height="@dimen/button_size"
             android:layout_gravity="center"
             android:background="@drawable/rounded_button"
             android:text="@string/login_button_txt"
             android:textColor="@color/colorWhite"
-            android:textSize="20dp"
+            android:textSize="@dimen/text_dimen20"
             android:textStyle="bold" />
     </LinearLayout>
 
